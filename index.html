@@ -29,10 +29,14 @@
       </thead>
       <tbody id="tableBody"></tbody>
     </table>
-    <button onclick="addRow()">➕ Add Row</button>
-    <button onclick="exportData()">📤 Export</button>
+    <div class="buttons">
+      <button onclick="addRow()">➕ Add Row</button>
+      <button onclick="exportData()">📤 Export to Excel</button>
+    </div>
   </div>
 
+  <!-- SheetJS library for Excel export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
