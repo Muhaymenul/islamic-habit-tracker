@@ -41,6 +41,22 @@ tr:nth-child(even) {
   background: #f9f9f9;
 }
 
+input {
+  width: 100%;
+  border: none;
+  text-align: center;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: 2px solid #009688;
+}
+
+.buttons {
+  text-align: center;
+}
+
 button {
   padding: 10px 15px;
   margin: 5px;
