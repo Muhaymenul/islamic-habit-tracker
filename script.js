@@ -1,4 +1,10 @@
-document.addEventListener("DOMContentLoaded", loadData);
+document.addEventListener("DOMContentLoaded", () => {
+  loadData();
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker Registered'));
+  }
+});
 
 function addRow() {
   const tbody = document.getElementById("tableBody");
@@ -48,13 +54,9 @@ function loadData() {
 }
 
 function exportData() {
-  const data = localStorage.getItem("habitData");
-  const blob = new Blob([data], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "habit-data.json";
-  a.click();
-  URL.revokeObjectURL(url);
+  const table = document.getElementById("habitTable");
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.table_to_sheet(table);
+  XLSX.utils.book_append_sheet(wb, ws, "Habits");
+  XLSX.writeFile(wb, "Islamic_Habit_Tracker.xlsx");
 }
